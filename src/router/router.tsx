@@ -1,6 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { ProductsByCategory, NotFound  } from '../components/';
 import Layout from '../app/layout';
+import { NotFound, ProductDetails, ProductsByCategory } from '../components';
+import PaymentForm from '../components/payment/PaymentForm';
+import CartPage from '../pages/CartPage';
+
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +15,18 @@ export const router = createBrowserRouter([
         element: <ProductsByCategory />,
       },
     ],
+  },
+  {
+    path: '/product/:productId',
+    element: <ProductDetails />,
+  },
+  {
+    path: '/PaymentForm',
+    element: <PaymentForm />,
+  },
+  {
+    path: '/cart',
+    element: <CartPage />,
   },
   {
     path: '*',

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { getProductsByCategory } from '../../services';
+import { getAllProducts, getProductsByCategory } from '../../services';
 import { Product } from '../../types';
 import { RootState } from './store';
 
@@ -53,6 +53,23 @@ export const fetchProductsByCategory = createAsyncThunk(
   }
 );
 
+// async thunk-> search all products.
+export const fetchAllProducts = createAsyncThunk(
+  'products/fetchAllProducts',
+  async (_, { rejectWithValue }) => {
+    try {
+      const products = await getAllProducts();
+      return products;
+    } catch (error) {
+      let errorMessage = 'Error fetching products';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -79,7 +96,15 @@ const productsSlice = createSlice({
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload as string;
-      });
+      })
+      .addCase(fetchAllProducts.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchAllProducts.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.allProducts = action.payload;
+        applyFilters(state);
+      })
   }
 });
 

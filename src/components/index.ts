@@ -1,5 +1,9 @@
-export * from './ListOfCategories';
+export * from './category/ListOfCategories';
 export * from './NotFound';
-export * from './Products';
-export * from './ProductsByCategory';
-export * from './filteredProducts';
+export * from './product/Products';
+export * from './product/ProductsByCategory';
+export * from './product/filteredProducts';
+export * from './product/productDetails';
+export * from './product/CartProduct';
+export * from './payment/PaymentForm';
+

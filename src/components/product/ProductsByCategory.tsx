@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductsByCategory } from '../services/';
-import { Product } from '../types'; 
+import { getProductsByCategory } from '../../services';
+import { Product } from '../../types'; 
 
 export const ProductsByCategory = () => {
   const { category } = useParams();

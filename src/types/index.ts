@@ -12,5 +12,13 @@ export type Product = {
   price: number;
   description: string;
   image: string;
+  category: string | Category;
+  rating: Rating;
+  available?: boolean;
+}
+
+export type Rating = { 
+  rate: number;
+  count: number;
 }
 
