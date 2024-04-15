@@ -1,35 +1,34 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../app/layout';
-import { NotFound, ProductDetails, ProductsByCategory } from '../components';
-import PaymentForm from '../components/payment/PaymentForm';
-import CartPage from '../pages/CartPage';
-
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "../app/layout";
+import { NotFound, ProductDetails, ProductsByCategory } from "../components";
+import PaymentForm from "../components/payment/PaymentForm";
+import CartPage from "../pages/CartPage";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: 'category/:category',
+        path: "category/:category",
         element: <ProductsByCategory />,
       },
     ],
   },
   {
-    path: '/product/:productId',
+    path: "/product/:productId",
     element: <ProductDetails />,
   },
   {
-    path: '/PaymentForm',
+    path: "/PaymentForm",
     element: <PaymentForm />,
   },
   {
-    path: '/cart',
+    path: "/cart",
     element: <CartPage />,
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFound />,
   },
 ]);

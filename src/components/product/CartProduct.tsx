@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 export const CartProduct = () => {
   const navigate = useNavigate();
-  const cartQuantity = useSelector(
-    (state: RootState) => state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  const cartQuantity = useSelector((state: RootState) =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
   );
 
   const handleNavigateToCart = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
 
   return (

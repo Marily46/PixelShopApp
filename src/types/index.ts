@@ -1,4 +1,3 @@
-
 export interface Category {
   id: number;
   name: string;
@@ -15,10 +14,9 @@ export type Product = {
   category: string | Category;
   rating: Rating;
   available?: boolean;
-}
+};
 
-export type Rating = { 
+export type Rating = {
   rate: number;
   count: number;
-}
-
+};

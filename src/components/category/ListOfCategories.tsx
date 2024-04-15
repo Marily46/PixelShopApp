@@ -1,4 +1,3 @@
-
 type ListOfCategoriesProps = {
   categories: string[];
   onCategorySelected: (category: string) => void;
@@ -14,8 +13,8 @@ export const ListOfCategories = ({
       <ul className="divide-y divide-gray-200">
         {categories.map((categoryName) => {
           return (
-            <li 
-              key={categoryName} 
+            <li
+              key={categoryName}
               className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer hover:bg-gray-100 rounded-md transition duration-150"
               onClick={() => onCategorySelected(categoryName)}
             >

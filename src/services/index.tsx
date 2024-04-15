@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { API_URL } from '../config';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import { API_URL } from "../config";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getCategories = async () => {
   try {
@@ -18,17 +18,19 @@ export const getAllProducts = async () => {
     console.log(response);
     return response.data;
   } catch (error) {
-    console.error('Error al obtener los productos:', error);
+    console.error("Error al obtener los productos:", error);
     throw error;
   }
 };
 
 export const getProductsByCategory = async (category: string) => {
   try {
-    const response = await axios.get(`${API_URL}/products/category/${category}`);
+    const response = await axios.get(
+      `${API_URL}/products/category/${category}`
+    );
     return response.data;
   } catch (error) {
-    console.error('Error al obtener los productos de la categoría:', error);
+    console.error("Error al obtener los productos de la categoría:", error);
     throw error;
   }
 };
@@ -39,15 +41,17 @@ export const getProductById = async (id: string) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al obtener el producto:', error);
+    console.error("Error al obtener el producto:", error);
     throw error;
   }
 };
 
-
-export const postAddToCart = createAsyncThunk('cart/postAddToCart', async ({ userId, productId }: { userId: string, productId: string }) => {
-  const response = await axios.post(`${API_URL}/carts/user/${userId}/product/${productId}`);
-  return response.data;
-});
-
-
+export const postAddToCart = createAsyncThunk(
+  "cart/postAddToCart",
+  async ({ userId, productId }: { userId: string; productId: string }) => {
+    const response = await axios.post(
+      `${API_URL}/carts/user/${userId}/product/${productId}`
+    );
+    return response.data;
+  }
+);
