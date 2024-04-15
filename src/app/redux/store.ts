@@ -9,6 +9,12 @@ export const store = configureStore({
   },
 });
 
+store.subscribe(() => {
+  const state = store.getState();
+  const cart = state.cart;
+  localStorage.setItem("cart", JSON.stringify(cart));
+});
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,

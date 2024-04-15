@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "../index.css";
 import { getCategories } from "../services/index";
 import {
@@ -10,10 +10,12 @@ import {
 } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  clearFilters,
   fetchAllProducts,
   fetchProductsByCategory,
   selectFilteredProducts,
 } from "./redux/productsSlice";
+import { MdClear } from "react-icons/md";
 
 const Layout = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -34,6 +36,11 @@ const Layout = () => {
     }
   }, [category, dispatch]);
 
+  const handleClearFilters = () => {
+    dispatch(clearFilters() as any);
+    navigate("/");
+  };
+
   const onCategorySelected = (category: string) => {
     navigate(`/category/${category}`);
   };
@@ -42,7 +49,9 @@ const Layout = () => {
     <div className="flex flex-col h-screen">
       <nav className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Pixel Shop</h1>
+          <Link to="/" className="text-2xl font-bold">
+            Pixel Shop
+          </Link>
           <CartProduct />
         </div>
       </nav>
@@ -54,6 +63,15 @@ const Layout = () => {
               onCategorySelected={onCategorySelected}
             />
             <FilteredProducts />
+            <div className="flex justify-center">
+              <button
+                onClick={handleClearFilters}
+                className="flex items-center justify-center px-4 py-2 mt-4 border border-gray-300 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring focus:border-gray-300 cursor-pointer"
+              >
+                <MdClear className="mr-2" />
+                Limpiar filtros
+              </button>
+            </div>
           </aside>
           <section className="md:col-span-2 lg:col-span-3">
             <div className="mb-6">

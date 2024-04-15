@@ -5,7 +5,7 @@ export interface Category {
   parentId?: number;
 }
 
-export type Product = {
+export interface Product {
   id: number;
   title: string;
   price: number;

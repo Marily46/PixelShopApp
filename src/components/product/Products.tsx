@@ -25,11 +25,14 @@ export function Products({ products }: { products: Product[] }) {
           key={product.id}
           className="flex flex-col border shadow hover:shadow-lg transition-shadow duration-300"
         >
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-full h-64 object-contain"
-          />
+          <Link to={`/product/${product.id}`}>
+            <span className="sr-only">{product.title}</span>
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-64 object-contain cursor-pointer"
+            />
+          </Link>
           <div className="p-4 flex-grow">
             <p className="text-lg font-bold">{product.title}</p>
             <p className="text-gray-700 mt-2">${product.price.toFixed(2)}</p>

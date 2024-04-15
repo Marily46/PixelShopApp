@@ -80,6 +80,12 @@ const productsSlice = createSlice({
       state.filters.price = action.payload;
       applyFilters(state);
     },
+    clearFilters: (state) => {
+      state.filters.price = {};
+      state.sort = { by: "price", order: "asc" };
+      state.filteredProducts = state.allProducts;
+      applyFilters(state);
+    },
     setSort: (
       state,
       action: PayloadAction<{ by: "price" | "name"; order: "asc" | "desc" }>
@@ -150,5 +156,5 @@ export const selectFilteredProducts = (state: RootState) =>
   state.products.filteredProducts;
 export const selectProductsStatus = (state: RootState) => state.products.status;
 export const selectProductsError = (state: RootState) => state.products.error;
-export const { setFilters, setSort } = productsSlice.actions;
+export const { setFilters, setSort, clearFilters } = productsSlice.actions;
 export default productsSlice.reducer;

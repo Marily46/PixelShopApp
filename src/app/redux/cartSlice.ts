@@ -14,9 +14,16 @@ export interface CartState {
   total: number;
 }
 
-const initialState: CartState = {
-  items: [],
-  total: 0,
+const saveCart = localStorage.getItem("cart");
+const initialState: CartState = saveCart
+  ? JSON.parse(localStorage.getItem("cart") || "{}")
+  : {
+      items: [],
+      total: 0,
+    };
+
+const saveCartToLocalStorage = (cart: CartState) => {
+  localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 export const fetchAddToCart = createAsyncThunk(
@@ -49,6 +56,7 @@ export const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity = quantity;
       }
+      saveCartToLocalStorage(state);
     },
     removeFromCart: (state, action) => {
       const { productId } = action.payload;
@@ -57,6 +65,7 @@ export const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
       state.total = 0;
+      saveCartToLocalStorage(state);
     },
   },
   extraReducers: (builder) => {
