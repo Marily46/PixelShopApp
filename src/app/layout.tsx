@@ -41,19 +41,19 @@ const Layout = () => {
   // Clear filters
   const handleClearFilters = () => {
     dispatch(clearFilters() as any);
-    navigate("/");
+    navigate("/home");
   };
 
   // Handle category selected 
   const onCategorySelected = (category: string) => {
-    navigate(`/category/${category}`);
+    navigate(`/home/category/${category}`);
   };
 
   return (
     <div className="flex flex-col h-screen">
       <nav className="bg-gray-800 text-white p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold">
+          <Link to="/home" className="text-2xl font-bold">
             Pixel Shop
           </Link>
           <CartProduct />

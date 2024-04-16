@@ -7,13 +7,12 @@ import { CartPage, LoginPage } from "../pages";
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <LoginPage />,
+  },
+  {
+    path: "/home",
     element: <Layout />,
     children: [
-      {
-        path: "login",
-        element: <LoginPage />,
-
-      },
       {
         path: "category/:category",
         element: <ProductsByCategory />,

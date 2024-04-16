@@ -6,3 +6,4 @@ export * from "./product/filteredProducts";
 export * from "./product/productDetails";
 export * from "./product/CartProduct";
 export * from "./payment/PaymentForm";
+export * from "./Login/LoginForm";

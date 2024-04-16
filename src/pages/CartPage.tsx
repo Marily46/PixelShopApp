@@ -27,7 +27,7 @@ export const CartPage = () => {
   };
 
   const handleContinueShopping = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   if (cart.items.length === 0) {

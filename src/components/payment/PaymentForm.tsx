@@ -49,12 +49,7 @@ const PaymentForm = () => {
     if (!cardNumberValid.test(payment.cardNumber)) {
       alert("Número de tarjeta inválido");
       return;
-    }
-    const expiryDateValid = /^[0-9]{2}\/[0-9]{2}$/;
-    if (!expiryDateValid.test(payment.expiryDate)) {
-      alert("Fecha de vencimiento inválida");
-      return;
-    }
+    } 
     const cvvValid = /^[0-9]{3}$/;
     if (!cvvValid.test(payment.cvv)) {
       alert("CVV inválido");
@@ -95,7 +90,7 @@ const PaymentForm = () => {
   if (confirmation) {
     const handleReturnShopping = () => {
       dispatch(clearCart());
-      navigate("/");
+      navigate("/home");
     };
 
     return (
@@ -107,7 +102,7 @@ const PaymentForm = () => {
           electrónico.
         </strong>
         <Link
-          to="/"
+          to="/home"
           className="block text-center mt-6 text-blue-500"
           onClick={handleReturnShopping}
         >
@@ -118,12 +113,12 @@ const PaymentForm = () => {
   }
 
   return (
-    <div className="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg max-w-4xl flex">
+    <div className="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg max-w-4xl flex flex-col md:flex-row">
       <IoIosArrowBack
         className="text-2xl text-gray-500"
         onClick={() => navigate("/cart")}
       />
-      <div className="w-3/5 p-5">
+      <div className="w-full md:w-3/5 p-5">
         <h2 className="text-xl font-semibold mb-5">Personal Information</h2>
         {/* Formulario de información personal */}
         <div className="space-y-4">
@@ -212,7 +207,7 @@ const PaymentForm = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/3 bg-white p-4 ml-6 max-h-[500px] overflow-y-auto">
+      <div className="w-full md:w-1/3 bg-white p-4 md:ml-6  max-h-[500px] overflow-y-auto">
         <h2 className="text-xl font-bold mb-4 sticky top-0 bg-white z-10 p-4">
           Resumen de compra
         </h2>
