@@ -32,12 +32,34 @@ const PaymentForm = () => {
     }, 4000);
   };
 
+  // manage form inputs
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPayment({ ...payment, [name]: value });
   };
 
+  // handle form submit
   const handleSubmit = () => {
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailValid.test(payment.email)) {
+      alert("Correo electrónico inválido");
+      return;
+    }
+    const cardNumberValid = /^[0-9]{16}$/;
+    if (!cardNumberValid.test(payment.cardNumber)) {
+      alert("Número de tarjeta inválido");
+      return;
+    }
+    const expiryDateValid = /^[0-9]{2}\/[0-9]{2}$/;
+    if (!expiryDateValid.test(payment.expiryDate)) {
+      alert("Fecha de vencimiento inválida");
+      return;
+    }
+    const cvvValid = /^[0-9]{3}$/;
+    if (!cvvValid.test(payment.cvv)) {
+      alert("CVV inválido");
+      return;
+    }
     if (
       !payment.name ||
       !payment.email ||

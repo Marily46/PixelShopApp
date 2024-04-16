@@ -24,10 +24,12 @@ const Layout = () => {
   const dispatch = useDispatch();
   const filteredProducts = useSelector(selectFilteredProducts);
 
+  // Fetch categories
   useEffect(() => {
     getCategories().then(setCategories);
   }, []);
 
+  // Fetch products by category or all products
   useEffect(() => {
     if (!category) {
       dispatch(fetchAllProducts() as any);
@@ -36,11 +38,13 @@ const Layout = () => {
     }
   }, [category, dispatch]);
 
+  // Clear filters
   const handleClearFilters = () => {
     dispatch(clearFilters() as any);
     navigate("/");
   };
 
+  // Handle category selected 
   const onCategorySelected = (category: string) => {
     navigate(`/category/${category}`);
   };

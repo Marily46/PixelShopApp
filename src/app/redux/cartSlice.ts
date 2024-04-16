@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { postAddToCart } from "../../services";
 
+// Define a type for the slice state
 export interface CartState {
   items: {
     product: {
@@ -22,10 +23,12 @@ const initialState: CartState = saveCart
       total: 0,
     };
 
+// Save cart to local storage
 const saveCartToLocalStorage = (cart: CartState) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+// Define the initial state using that type
 export const fetchAddToCart = createAsyncThunk(
   "cart/fetchAddToCart",
   async ({ userId, productId }: { userId: string; productId: string }) => {
@@ -34,6 +37,7 @@ export const fetchAddToCart = createAsyncThunk(
   }
 );
 
+// Define a slice with the initial state, reducers, and extra reducers
 export const cartSlice = createSlice({
   name: "cart",
   initialState,

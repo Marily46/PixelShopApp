@@ -21,6 +21,7 @@ interface ProductsState {
   };
 }
 
+// initial state
 const initialState: ProductsState = {
   allProducts: [],
   filteredProducts: [],
@@ -69,6 +70,7 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
+// slice with reducers and extra reducers
 const productsSlice = createSlice({
   name: "products",
   initialState,

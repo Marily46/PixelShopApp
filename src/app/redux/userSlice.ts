@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { login } from '../../services';
 
-
+// Define a type for the slice state
 interface UserState {
     token: string | null;
     status: 'idle' | 'loading' | 'failed';
   }
   
+  // Define the initial state using that type
   const initialState: UserState = {
     token: null,
     status: 'idle',
@@ -21,6 +22,7 @@ interface UserState {
     }
   );
   
+  // Define a slice with the initial state, reducers, and extra reducers
   export const userSlice = createSlice({
     name: 'user',
     initialState,
