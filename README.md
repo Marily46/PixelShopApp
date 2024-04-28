@@ -1,15 +1,3 @@
-# Ejercicio
-
-Desarrollar una aplicación web completa de comercio electrónico utilizando React y la API Platzi Fake Store.
-
-# Recursos
-
-Documentación Platzi Fake Store API: https://fakeapi.platzi.com/
-Librerías:
-React Router: https://reacttraining.com/react-router/
-Redux: Redux Toolkit | Redux Toolkit (redux-toolkit.js.org)
-Axios: https://github.com/axios/axios
-
 # Requerimientos
 
 - [x] Navegar por las categorías de productos: Mostrar una lista de categorías disponibles en la API y permitir al usuario navegar por ellas para ver los productos específicos de cada categoría.
